@@ -2,7 +2,7 @@ import { IsString, IsNotEmpty, ValidateNested } from 'class-validator';
 import { Type } from 'class-transformer';
 import ObjectWithIdDTO from '../../utils/types/objectWithId.dto';
 
-export class CreateProductDto {
+export class CreateGameDto {
   @IsString()
   @IsNotEmpty()
   name: string;
@@ -12,4 +12,4 @@ export class CreateProductDto {
   category: ObjectWithIdDTO;
 }
 
-export default CreateProductDto;
+export default CreateGameDto;

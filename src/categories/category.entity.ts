@@ -1,5 +1,5 @@
 import { Column, Entity, ManyToMany, PrimaryGeneratedColumn } from 'typeorm';
-import Post from '../posts/post.entity';
+import Game from '../games/game.entity';
 
 @Entity()
 class Category {
@@ -9,8 +9,8 @@ class Category {
   @Column()
   public name: string;
 
-  @ManyToMany(() => Post, (post: Post) => post.categories)
-  public posts: Post[];
+  @ManyToMany(() => Games, (game: Game) => game.categories)
+  public games: Game[];
 }
 
 export default Category;

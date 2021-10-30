@@ -7,8 +7,8 @@ import {
   ClassSerializerInterceptor, Post,
 } from '@nestjs/common';
 import JwtAuthenticationGuard from '../authentication/jwt-authentication.guard';
-import CreateProductDto from './dto/createProduct.dto';
-import ProductsService from './products.service';
+import CreateProductDto from './dto/createGame.dto';
+import ProductsService from './games.service';
 
 @Controller('products')
 @UseInterceptors(ClassSerializerInterceptor)
