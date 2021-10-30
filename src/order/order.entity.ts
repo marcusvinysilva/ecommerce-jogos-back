@@ -1,9 +1,9 @@
 /* eslint-disable prettier/prettier */
 import { Entity, ManyToMany, ManyToOne, PrimaryGeneratedColumn} from 'typeorm'
-import {User} from 
-import {Game} from 
-import {FormasPagamento} from 
-import {Entrega} from 
+import { User } from 
+import { Game } from 
+import { PaymentMethods } from 
+import { Delivery } from 
 
 @Entity()
 export class OrderEntity{
@@ -18,9 +18,9 @@ export class OrderEntity{
     @ManyToOne(() => Game, game => game.order)
     game: Game;
 
-    // @ManyToOne(() => FormasPagamento, pag => pag.order)
-    // pag: FormasPagamento;
+    // @ManyToOne(() => PaymentMethods, pag => pag.order)
+    // pag: PaymentMethods;
 
-    // @ManyToOne(() => Entrega, entrega => entrega.order)
-    // entrega: Entrega;
+    // @ManyToOne(() => Delivery, delivery => delivery.order)
+    // delivery: Delivery;
 }
