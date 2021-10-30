@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 import { Injectable, NotFoundException } from '@nestjs/common';
-import { CreateOrderDto } from ''
+import { CreateOrderDto } from 'src/order/dto/create-order.dto'
 import { Repository } from 'typeorm'
 import { InjectRepository } from '@nestjs/typeorm';
 import { OrderEntity } from './order.entity';
@@ -14,6 +14,10 @@ export class OrderService {
 
         async findMany() {
             return await this.orderRepository.find()
-         
+          }
+
+        async postOrder(createOrderDto: CreateOrderDto) {
+            const order = this.orderRepository.create({ ...createOrderDto });
+            return await this.orderRepository.save(order);
           }
 }
