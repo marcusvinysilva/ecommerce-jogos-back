@@ -7,20 +7,17 @@ import {
   Patch,
   UseGuards,
   UseInterceptors,
-  ClassSerializerInterceptor, Post,
+  ClassSerializerInterceptor,
+  Post,
 } from '@nestjs/common';
 import CategoriesService from './categories.service';
 import CreateCategoryDto from './dto/createCategory.dto';
 import UpdateCategoryDto from './dto/updateCategory.dto';
-import JwtAuthenticationGuard from '../authentication/jwt-authentication.guard';
-import FindOneParams from '../utils/findOneParams';
 
 @Controller('categories')
 @UseInterceptors(ClassSerializerInterceptor)
 export default class CategoriesController {
-  constructor(
-    private readonly categoriesService: CategoriesService
-  ) {}
+  constructor(private readonly categoriesService: CategoriesService) {}
 
   @Get()
   getAllCategories() {
@@ -28,8 +25,8 @@ export default class CategoriesController {
   }
 
   @Get(':id')
-  getCategoryById(@Param() { id }: FindOneParams) {
-    return this.categoriesService.getCategoryById(Number(id));
+  getCategoryById(@Param('id') id: string) {
+    return this.categoriesService.getCategoryById(id);
   }
 
   @Post()
@@ -39,12 +36,15 @@ export default class CategoriesController {
   }
 
   @Patch(':id')
-  async updateCategory(@Param() { id }: FindOneParams, @Body() category: UpdateCategoryDto) {
-    return this.categoriesService.updateCategory(Number(id), category);
+  async updateCategory(
+    @Param('id') id: string,
+    @Body() category: UpdateCategoryDto,
+  ) {
+    return this.categoriesService.updateCategory(id, category);
   }
 
   @Delete(':id')
-  async deleteCategory(@Param() { id }: FindOneParams) {
-    return this.categoriesService.deleteCategory(Number(id));
+  async deleteCategory(@Param('id') id: string) {
+    return this.categoriesService.deleteCategory(id);
   }
 }

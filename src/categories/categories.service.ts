@@ -8,9 +8,7 @@ import CategoryNotFoundException from './exceptions/categoryNotFound.exception';
 
 @Injectable()
 export default class CategoriesService {
-  /**
-   * @ignore
-   */
+
   constructor(
     @InjectRepository(Category)
     private categoriesRepository: Repository<Category>,
@@ -20,15 +18,9 @@ export default class CategoriesService {
     return this.categoriesRepository.find({ relations: ['posts'] });
   }
 
-  /**
-   * A method that fetches a category with a given id. Example:
-   *
-   * @example
-   * const category = await categoriesService.getCategoryById(1);
-   */
   async getCategoryById(id: number): Promise<Category> {
     const category = await this.categoriesRepository.findOne(id, {
-      relations: ['posts'],
+      relations: ['games'],
     });
     if (category) {
       return category;
@@ -48,7 +40,7 @@ export default class CategoriesService {
   ): Promise<Category> {
     await this.categoriesRepository.update(id, category);
     const updatedCategory = await this.categoriesRepository.findOne(id, {
-      relations: ['posts'],
+      relations: ['games'],
     });
     if (updatedCategory) {
       return updatedCategory;
