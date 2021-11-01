@@ -10,6 +10,12 @@ export class CreateOrderDto {
     @IsNotEmpty()
     game: string[];
 
+    @IsNotEmpty()
+    pag: string[];
+
+    @IsNotEmpty()
+    delivery: string[];
+
 
 
 }
