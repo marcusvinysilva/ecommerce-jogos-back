@@ -1,12 +1,12 @@
 /* eslint-disable prettier/prettier */
 import { Entity, ManyToMany, ManyToOne, PrimaryGeneratedColumn} from 'typeorm'
-import { User } from ''
-import { Game } from 
-import { PaymentMethods } from 
-import { Delivery } from 
+import { User } from
+import { Game } from
+import { PaymentMethods } from
+import { Delivery } from
 
 @Entity()
-export class OrderEntity{
+export class Order{
     @PrimaryGeneratedColumn('uuid')
     id: string;
 
