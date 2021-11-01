@@ -1,10 +1,9 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import CreateCategoryDto from './dto/createCategory.dto';
 import Category from './category.entity';
 import UpdateCategoryDto from './dto/updateCategory.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import CategoryNotFoundException from './exceptions/categoryNotFound.exception';
 
 @Injectable()
 export default class CategoriesService {
@@ -15,17 +14,17 @@ export default class CategoriesService {
   ) {}
 
   getAllCategories(): Promise<Category[]> {
-    return this.categoriesRepository.find({ relations: ['posts'] });
+    return this.categoriesRepository.find({ relations: ['games'] });
   }
 
-  async getCategoryById(id: number): Promise<Category> {
+  async getCategoryById(id: string): Promise<Category> {
     const category = await this.categoriesRepository.findOne(id, {
-      relations: ['games'],
+      select: ['games'],
     });
     if (category) {
       return category;
     }
-    throw new CategoryNotFoundException(id);
+    throw new NotFoundException('Categoria não encontrada!');
   }
 
   async createCategory(category: CreateCategoryDto) {
