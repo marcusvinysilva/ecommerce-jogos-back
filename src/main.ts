@@ -8,9 +8,9 @@ async function bootstrap() {
 
   const config = new DocumentBuilder()
   .setTitle('Ecommerce of Games')
-  .setDescription('')
+  .setDescription('Aqui é onde faremos o pedido')
   .setVersion('1.0')
-  .addTag('users')
+  .addTag('order')
   .build();
 
   const document = SwaggerModule.createDocument(app, config);
