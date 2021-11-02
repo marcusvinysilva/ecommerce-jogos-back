@@ -1,5 +1,5 @@
 import { Column, Entity, PrimaryGeneratedColumn, ManyToOne } from 'typeorm';
-import GameCategory from '../categories/category.entity';
+import Category from '../categories/category.entity';
 
 @Entity()
 class Game {
@@ -18,8 +18,8 @@ class Game {
   @Column()
   public images: string;
 
-  @ManyToOne(() => GameCategory, (category: GameCategory) => category.games)
-  public category: GameCategory;
+  @ManyToOne(() => Category, (category: Category) => category.games)
+  public category: Category;
 
   @Column({
     type: 'jsonb'

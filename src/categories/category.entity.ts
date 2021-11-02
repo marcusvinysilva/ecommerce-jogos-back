@@ -9,7 +9,7 @@ class Category {
   @Column()
   public name: string;
 
-  @ManyToMany(() => Games, (game: Game) => game.categories)
+  @ManyToMany(() => Game, (game: Game) => game.category)
   public games: Game[];
 }
 
