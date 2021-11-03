@@ -28,4 +28,8 @@ export class UsersService {
 
     return users;
   }
+
+  async findAll(): Promise<User[]> {
+    return this.userRepository.find();
+  }
 }

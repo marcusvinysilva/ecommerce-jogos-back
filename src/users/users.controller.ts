@@ -33,4 +33,9 @@ export class UsersController {
       message: 'Users found',
     };
   }
+
+  @Get('findAll')
+  async findAll() {
+    return this.usersService.findAll();
+  }
 }
