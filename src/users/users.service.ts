@@ -4,6 +4,7 @@ import { UserRepository } from './users.repository';
 import { CreateUserDto } from './dtos/create-user.dto';
 import { User } from './user.entity';
 import { UserRole } from './user-roles.enum';
+import { FindUsersQueryDto } from './dtos/find-users-query.dto';
 
 @Injectable()
 export class UsersService {
@@ -18,5 +19,13 @@ export class UsersService {
     } else {
       return this.userRepository.createUser(createUserDto, UserRole.ADMIN);
     }
+  }
+
+  async findUsersByQuery(
+    queryDto: FindUsersQueryDto,
+  ): Promise<{ users: User[]; total: number }> {
+    const users = await this.userRepository.findUsersByQuery(queryDto);
+
+    return users;
   }
 }
