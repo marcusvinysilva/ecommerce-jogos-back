@@ -4,18 +4,16 @@ import { IsNotEmpty } from 'class-validator';
 
 export class CreateOrderDto {
 
-    @IsNotEmpty()
-    user: string;
+    // @IsNotEmpty()
+    // user: string;
 
-    @IsNotEmpty()
-    game: string[];
+    // @IsNotEmpty()
+    // game: string[];
 
-    @IsNotEmpty()
-    pag: string[];
+    // @IsNotEmpty()
+    // pay: string[];
 
-    @IsNotEmpty()
-    delivery: string[];
-
-
+    // @IsNotEmpty()
+    // delivery: string[];
 
 }
