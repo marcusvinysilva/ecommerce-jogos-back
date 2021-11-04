@@ -8,7 +8,7 @@ import {
 import { Type } from 'class-transformer';
 import ObjectWithIdDTO from '../../utils/types/objectWithId.dto';
 
-export class CreateGameDto {
+export class UpdateGameDto {
   @IsString()
   @IsNotEmpty({ message: 'Field name is required' })
   gameName: string;
@@ -26,7 +26,7 @@ export class CreateGameDto {
 
   @IsOptional()
   @IsString()
-  image: string;
+  images: string;
 
   @ValidateNested()
   @Type(() => ObjectWithIdDTO)

@@ -13,7 +13,7 @@ import CreateCategoryDto from './dto/createCategory.dto';
 import UpdateCategoryDto from './dto/updateCategory.dto';
 
 @Controller('categories')
-@UseGuards(AuthGuard(), RolesGuard)
+//@UseGuards(AuthGuard(), RolesGuard)
 export default class CategoriesController {
   constructor(private categoriesService: CategoriesService) {}
 
@@ -23,8 +23,8 @@ export default class CategoriesController {
   }
 
   @Post()
-  @Role(UserRole.ADMIN)
-  @UseGuards(JwtAuthenticationGuard)
+  //@Role(UserRole.ADMIN)
+  //@UseGuards(JwtAuthenticationGuard)
   async createCategory(@Body() category: CreateCategoryDto) {
     return this.categoriesService.createCategory(category);
   }
@@ -39,6 +39,7 @@ export default class CategoriesController {
 
   @Delete(':id')
   async deleteCategory(@Param('id') id: string) {
-    return this.categoriesService.deleteCategory(id);
+    await this.categoriesService.deleteCategory(id);
+    return { message: 'Game succesfully removed'}
   }
 }

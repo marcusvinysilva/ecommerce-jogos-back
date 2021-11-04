@@ -2,17 +2,18 @@ import {
   Body,
   Controller,
   Get,
-  UseGuards,
-  UseInterceptors,
-  ClassSerializerInterceptor,
   Post,
+  Patch,
+  Param,
+  Delete,
 } from '@nestjs/common';
-import JwtAuthenticationGuard from '../authentication/jwt-authentication.guard';
-import CreateGameDto from './dto/createGame.dto';
-import GamesService from './games.service';
+//import JwtAuthenticationGuard from '../authentication/jwt-authentication.guard';
+import { CreateGameDto } from './dto/createGame.dto';
+import { UpdateGameDto } from './dto/updateGame.dto';
+import { GamesService } from './games.service';
 
 @Controller('games')
-@UseGuards(AuthGuard(), RolesGuard)
+//@UseGuards(AuthGuard(), RolesGuard)
 export class GamesController {
   constructor(private gamesService: GamesService) {}
 
@@ -22,31 +23,32 @@ export class GamesController {
   }
 
   @Post()
-  @Role(UserRole.ADMIN)
-  @UseGuards(JwtAuthenticationGuard)
-  async createGame(@Body() game: CreateGameDto): Promise<ReturnGameDto> {
-    const newGame = await this.gamesService.createProduct(game);
+  //@Role(UserRole.ADMIN)
+  //@UseGuards(JwtAuthenticationGuard)
+  async createGame(@Body() game: CreateGameDto) {
+    const newGame = await this.gamesService.createGame(game);
     return {
       newGame,
       message: 'Game was successfully registered! ',
     };
   }
 
-  @Patch('/:id')
+  @Patch(':id')
   async updateGame(
-    @Body(ValidationPipe) updateGameDto: UpdateGameDto,
-    @GetUser() user: User,
+    @Body() updateGameDto: UpdateGameDto,
     @Param('id') id: string,
   ) {
-    if (user.role != UserRole.ADMIN)
-      throw new ForbiddenException('Authorization was denied. ');
-    else {
-      return this.gamesService.updateGame(updateGameDto, id);
-    }
+    return this.gamesService.updateGame(updateGameDto, id);
+    // ) {
+    //   if (user.role != UserRole.ADMIN)
+    //     throw new ForbiddenException('Authorization was denied. ');
+    //   else {
+    //     return this.gamesService.updateGame(updateGameDto, id);
+    //   }
   }
 
   @Delete('/:id')
-  @Role(UserRole.ADMIN)
+  //@Role(UserRole.ADMIN)
   async deleteGame(@Param('id') id: string) {
     await this.gamesService.deleteGame(id);
     return { message: 'The game was remove.' };

@@ -20,10 +20,6 @@ class Game {
 
   @ManyToOne(() => Category, (category: Category) => category.games)
   public category: Category;
-
-  @Column({
-    type: 'jsonb'
-  })
 }
 
 export default Game;

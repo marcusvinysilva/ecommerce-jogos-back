@@ -34,7 +34,7 @@ export default class CategoriesService {
   }
 
   async updateCategory(
-    id: number,
+    id: string,
     category: UpdateCategoryDto,
   ): Promise<Category> {
     await this.categoriesRepository.update(id, category);
@@ -44,17 +44,17 @@ export default class CategoriesService {
     if (updatedCategory) {
       return updatedCategory;
     }
-    throw new CategoryNotFoundException(id);
+    throw new NotFoundException(id);
   }
 
-  async deleteCategoryById(id: number): Promise<void> {
+  async deleteCategoryById(id: string): Promise<void> {
     return this.deleteCategory(id);
   }
 
-  async deleteCategory(id: number): Promise<void> {
+  async deleteCategory(id: string): Promise<void> {
     const deleteResponse = await this.categoriesRepository.delete(id);
     if (!deleteResponse.affected) {
-      throw new CategoryNotFoundException(id);
+      throw new NotFoundException(id);
     }
   }
 }
