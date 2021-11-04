@@ -1,6 +1,8 @@
-import { Body, Controller, Post, ValidationPipe } from '@nestjs/common';
+import { Body, Controller, Get, Post, ValidationPipe } from '@nestjs/common';
 import { CreateUserDto } from 'src/users/dtos/create-user.dto';
+import { User } from 'src/users/user.entity';
 import { AuthService } from './auth.service';
+import { GetUser } from './get-user.decorator';
 
 @Controller('auth')
 export class AuthController {
@@ -14,5 +16,10 @@ export class AuthController {
     return {
       message: 'Registration performed successfully',
     };
+  }
+
+  @Get('me')
+  getMe(@GetUser() user: User): User {
+    return user;
   }
 }
