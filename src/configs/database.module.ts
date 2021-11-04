@@ -1,25 +1,12 @@
-import { Module } from '@nestjs/common';
-import { TypeOrmModule } from '@nestjs/typeorm';
-import { ConfigModule, ConfigService } from '@nestjs/config';
- 
-@Module({
-  imports: [
-    TypeOrmModule.forRootAsync({
-      imports: [ConfigModule],
-      inject: [ConfigService],
-      useFactory: (configService: ConfigService) => ({
-        type: 'postgres',
-        host: configService.get('POSTGRES_HOST'),
-        port: configService.get('POSTGRES_PORT'),
-        username: configService.get('POSTGRES_USER'),
-        password: configService.get('POSTGRES_PASSWORD'),
-        database: configService.get('POSTGRES_DB'),
-        entities: [
-          __dirname + '/../**/*.entity.ts',
-        ],
-        synchronize: true,
-      })
-    }),
-  ],
-})
-export class DatabaseModule {}
+import { TypeOrmModuleOptions } from '@nestjs/typeorm'; // módulo de configuração do typeORM
+
+export const typeOrmConfig: TypeOrmModuleOptions = {
+  type: 'postgres',
+  host: 'localhost',
+  port: 5432,
+  username: 'pguser',
+  password: 'pgpassword',
+  database: 'ultimate',
+  entities: [__dirname + '/../**/*.entity.{js,ts}'], // acessa todas as pastas do projeto e procura pelas entities
+  synchronize: true, // sincroniza automaticamente o Schema com o DB sempre que alterado (sem necessidade de fazer migrations)
+};
