@@ -1,4 +1,11 @@
-import { IsEmail, IsNotEmpty, MaxLength, MinLength } from 'class-validator';
+import {
+  IsEmail,
+  IsNotEmpty,
+  IsString,
+  Matches,
+  MaxLength,
+  MinLength,
+} from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
 
 export class CreateUserDto {
@@ -45,16 +52,27 @@ export class CreateUserDto {
   email: string;
 
   @IsNotEmpty({ message: 'Enter a password' })
-  @MinLength(6, { message: 'Password must have at least 6 characters' })
-  @ApiProperty({
-    description:
-      'The password must be at least 6 characters long and must have uppercase, lowercase, numbers and special characters.',
+  @MinLength(6, { message: 'Password must be at least 6 characters' })
+  @MaxLength(32, { message: 'Password must have a maximum of 32 characters' })
+  @IsString({ message: 'Enter a valid password' })
+  @Matches(/((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/, {
+    message:
+      'The password must contain at least one uppercase letter, one lowercase letter, one number and one symbol',
   })
+  @ApiProperty()
   password: string;
 
   @IsNotEmpty({ message: 'Enter password confirmation' })
   @MinLength(6, {
     message: 'Password confirmation must have at least 6 characters',
+  })
+  @MaxLength(32, {
+    message: 'Password confirmation must have a maximum of 32 characters',
+  })
+  @IsString({ message: 'Enter a valid password confirmation' })
+  @Matches(/((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/, {
+    message:
+      'Password confirmation must contain at least one uppercase letter, one lowercase letter, one number and one symbol',
   })
   @ApiProperty()
   passwordConfirmation: string;

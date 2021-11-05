@@ -12,6 +12,7 @@ import { CreateUserDto } from 'src/users/dtos/create-user.dto';
 import { UserRole } from 'src/users/user-roles.enum';
 import { User } from 'src/users/user.entity';
 import { UserRepository } from 'src/users/users.repository';
+import { ChangePasswordDto } from './change-password.dto';
 import { CredentialsDto } from './credentials.dto';
 
 @Injectable()
@@ -82,5 +83,17 @@ export class AuthService {
     };
 
     await this.mailerService.sendMail(mail);
+  }
+
+  async changePassword(
+    id: string,
+    changePasswordDto: ChangePasswordDto,
+  ): Promise<void> {
+    const { password, passwordConfirmation } = changePasswordDto;
+
+    if (password != passwordConfirmation)
+      throw new UnprocessableEntityException('Passwords do not match');
+
+    await this.userRepository.changePassword(id, password);
   }
 }
