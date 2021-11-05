@@ -5,17 +5,24 @@ import {
   ValidationPipe,
   Get,
   Query,
+  UseGuards,
 } from '@nestjs/common';
 import { CreateUserDto } from './dtos/create-user.dto';
 import { UsersService } from './users.service';
 import { ReturnUserDto } from './dtos/return-user.dto';
 import { FindUsersQueryDto } from './dtos/find-users-query.dto';
+import { AuthGuard } from '@nestjs/passport';
+import { RolesGuard } from 'src/auth/roles.guard';
+import { Role } from 'src/auth/role.decorator';
+import { UserRole } from './user-roles.enum';
 
 @Controller('users')
+@UseGuards(AuthGuard(), RolesGuard)
 export class UsersController {
   constructor(private usersService: UsersService) {}
 
-  @Post()
+  @Post('createAdmin')
+  @Role(UserRole.ADMIN)
   async createAdminUser(
     @Body(ValidationPipe) createUserDto: CreateUserDto,
   ): Promise<ReturnUserDto> {
@@ -24,7 +31,8 @@ export class UsersController {
     return { user, message: 'Administrator successfully registered' };
   }
 
-  @Get()
+  @Get('findByQuery')
+  @Role(UserRole.ADMIN)
   async findUsersByQuery(@Query() query: FindUsersQueryDto) {
     const found = await this.usersService.findUsersByQuery(query);
 
@@ -35,6 +43,7 @@ export class UsersController {
   }
 
   @Get('findAll')
+  @Role(UserRole.ADMIN)
   async findAll() {
     return this.usersService.findAll();
   }
