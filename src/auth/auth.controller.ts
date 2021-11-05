@@ -47,4 +47,15 @@ export class AuthController {
     await this.authService.confirmEmail(token);
     return { message: 'Email confirmed' };
   }
+
+  @Post('send-recover-email')
+  async sendRecoverPasswordEmail(
+    @Body('email') email: string,
+  ): Promise<{ message: string }> {
+    await this.authService.sendRecoverPasswordEmail(email);
+    return {
+      message:
+        'An email has been sent with instructions to reset your password',
+    };
+  }
 }

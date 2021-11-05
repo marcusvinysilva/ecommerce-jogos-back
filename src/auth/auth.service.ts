@@ -1,3 +1,4 @@
+import { MailerService } from '@nestjs-modules/mailer';
 import {
   Injectable,
   NotFoundException,
@@ -6,6 +7,7 @@ import {
 } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { InjectRepository } from '@nestjs/typeorm';
+import { randomBytes } from 'crypto';
 import { CreateUserDto } from 'src/users/dtos/create-user.dto';
 import { UserRole } from 'src/users/user-roles.enum';
 import { User } from 'src/users/user.entity';
@@ -18,6 +20,7 @@ export class AuthService {
     @InjectRepository(UserRepository)
     private userRepository: UserRepository,
     private jwtService: JwtService,
+    private mailerService: MailerService,
   ) {}
 
   async signUp(createUserDto: CreateUserDto): Promise<User> {
@@ -55,5 +58,29 @@ export class AuthService {
     );
 
     if (result.affected === 0) throw new NotFoundException('Invalid token');
+  }
+
+  async sendRecoverPasswordEmail(email: string): Promise<void> {
+    const user = await this.userRepository.findOne({ email });
+
+    if (!user)
+      throw new NotFoundException(
+        'There is no registered user with this email',
+      );
+
+    user.recoverToken = randomBytes(32).toString('hex');
+    await user.save();
+
+    const mail = {
+      to: user.email,
+      from: 'noreply@mailsender.com',
+      subject: 'Password recovery',
+      template: './recover-password',
+      context: {
+        token: user.recoverToken,
+      },
+    };
+
+    await this.mailerService.sendMail(mail);
   }
 }
