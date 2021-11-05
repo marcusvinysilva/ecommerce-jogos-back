@@ -12,6 +12,7 @@ import { AuthGuard } from '@nestjs/passport';
 import { CreateUserDto } from 'src/users/dtos/create-user.dto';
 import { User } from 'src/users/user.entity';
 import { AuthService } from './auth.service';
+import { ChangePasswordDto } from './change-password.dto';
 import { CredentialsDto } from './credentials.dto';
 import { GetUser } from './get-user.decorator';
 
@@ -56,6 +57,17 @@ export class AuthController {
     return {
       message:
         'An email has been sent with instructions to reset your password',
+    };
+  }
+
+  @Patch('reset-password/:token')
+  async resetPassword(
+    @Param('token') token: string,
+    @Body(ValidationPipe) changePasswordDto: ChangePasswordDto,
+  ): Promise<{ message: string }> {
+    await this.authService.resetPassword(token, changePasswordDto);
+    return {
+      message: 'Senha alterada com sucesso',
     };
   }
 }

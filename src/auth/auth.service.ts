@@ -96,4 +96,22 @@ export class AuthService {
 
     await this.userRepository.changePassword(id, password);
   }
+
+  async resetPassword(
+    recoverToken: string,
+    changePasswordDto: ChangePasswordDto,
+  ): Promise<void> {
+    const user = await this.userRepository.findOne(
+      { recoverToken },
+      { select: ['id'] },
+    );
+
+    if (!user) throw new NotFoundException('Invalid token');
+
+    try {
+      await this.changePassword(user.id.toString(), changePasswordDto);
+    } catch (error) {
+      throw error;
+    }
+  }
 }
