@@ -1,3 +1,4 @@
+import { ApiProperty } from '@nestjs/swagger';
 import {
   IsString,
   MinLength,
@@ -15,6 +16,7 @@ export class ChangePasswordDto {
     message:
       'The password must contain at least one uppercase letter, one lowercase letter, one number and one symbol',
   })
+  @ApiProperty()
   password: string;
 
   @IsNotEmpty({ message: 'Enter password confirmation' })
@@ -29,5 +31,6 @@ export class ChangePasswordDto {
     message:
       'Password confirmation must contain at least one uppercase letter, one lowercase letter, one number and one symbol',
   })
+  @ApiProperty()
   passwordConfirmation: string;
 }
