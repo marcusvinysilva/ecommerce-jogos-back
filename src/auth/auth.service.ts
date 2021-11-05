@@ -1,5 +1,6 @@
 import {
   Injectable,
+  NotFoundException,
   UnauthorizedException,
   UnprocessableEntityException,
 } from '@nestjs/common';
@@ -45,5 +46,14 @@ export class AuthService {
     const token = await this.jwtService.sign(jwtPayload);
 
     return { token };
+  }
+
+  async confirmEmail(confirmationToken: string): Promise<void> {
+    const result = await this.userRepository.update(
+      { confirmationToken },
+      { confirmationToken: null },
+    );
+
+    if (result.affected === 0) throw new NotFoundException('Invalid token');
   }
 }

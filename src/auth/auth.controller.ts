@@ -2,6 +2,8 @@ import {
   Body,
   Controller,
   Get,
+  Param,
+  Patch,
   Post,
   UseGuards,
   ValidationPipe,
@@ -38,5 +40,11 @@ export class AuthController {
   @UseGuards(AuthGuard())
   getMe(@GetUser() user: User): User {
     return user;
+  }
+
+  @Patch(':token')
+  async confirmEmail(@Param('token') token: string) {
+    await this.authService.confirmEmail(token);
+    return { message: 'Email confirmed' };
   }
 }
