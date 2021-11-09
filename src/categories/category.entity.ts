@@ -1,16 +1,23 @@
-import { Column, Entity, ManyToMany, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  JoinTable,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 import Game from '../games/game.entity';
 
 @Entity()
 class Category {
-  @PrimaryGeneratedColumn()
-  public id: number;
+  @PrimaryGeneratedColumn('uuid')
+  id: string;
 
-  @Column()
-  public name: string;
+  @Column({ nullable: false, type: 'varchar' })
+  name: string;
 
-  @ManyToMany(() => Game, (game: Game) => game.category)
-  public games: Game[];
+  @OneToMany(() => Game, (game: Game) => game.category)
+  @JoinTable()
+  games: Game[];
 }
 
 export default Category;
