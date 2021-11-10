@@ -3,10 +3,7 @@ import {
   MaxLength,
   IsOptional,
   IsNotEmpty,
-  ValidateNested,
 } from 'class-validator';
-import { Type } from 'class-transformer';
-import ObjectWithIdDTO from '../../utils/types/objectWithId.dto';
 
 export class UpdateGameDto {
   @IsString()
@@ -28,7 +25,7 @@ export class UpdateGameDto {
   @IsString()
   images: string;
 
-  @ValidateNested()
-  @Type(() => ObjectWithIdDTO)
-  category: ObjectWithIdDTO;
+  @IsOptional()
+  @IsString()
+  category: string;
 }

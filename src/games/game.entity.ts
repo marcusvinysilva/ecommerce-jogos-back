@@ -9,6 +9,12 @@ import Category from '../categories/category.entity';
 
 @Entity()
 class Game {
+  static find(): Game | PromiseLike<Game> {
+    throw new Error('Method not implemented.');
+  }
+  save() {
+    throw new Error('Method not implemented.');
+  }
   @PrimaryGeneratedColumn('uuid')
   id: string;
 

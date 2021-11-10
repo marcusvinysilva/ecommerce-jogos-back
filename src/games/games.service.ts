@@ -6,26 +6,27 @@ import {
   NotFoundException,
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
 import Game from './game.entity';
 import { CreateGameDto } from './dto/createGame.dto';
 import { UpdateGameDto } from './dto/updateGame.dto';
+import { GameRepository } from './games.repository';
 
 @Injectable()
 export class GamesService {
   constructor(
-    @InjectRepository(Game)
-    private gamesRepository: Repository<Game>,
+    @InjectRepository(GameRepository)
+    private gamesRepository: GameRepository,
   ) {}
 
-  getAllGames() {
-    return this.gamesRepository.find();
+  async getAllGames(): Promise<Game> {
+    return Game.find();
   }
 
-  async createGame(game: CreateGameDto) {
-    const newGame = await this.gamesRepository.create(game);
-    await this.gamesRepository.save(newGame);
-    return newGame;
+  async createGame(createGameDto: CreateGameDto) {
+    return this.gamesRepository.createGame(createGameDto);
+    //const newGame = this.gamesRepository.create(game);
+    //await this.gamesRepository.save(newGame);
+    //return newGame;
   }
 
   async findGameById(id: string): Promise<Game> {

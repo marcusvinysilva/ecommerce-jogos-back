@@ -2,11 +2,11 @@ import { TypeOrmModuleOptions } from '@nestjs/typeorm'; // m√≥dulo de configura√
 
 export const typeOrmConfig: TypeOrmModuleOptions = {
   type: 'postgres',
-  host: 'localhost',
+  host: 'tuffi.db.elephantsql.com',
   port: 5432,
-  username: 'pguser',
-  password: 'pgpassword',
-  database: 'ultimate',
+  username: 'drinmsnd',
+  password: 'QNvoLJg9RWRj10J1mQ_ncj_dpzlFOBZn',
+  database: 'drinmsnd',
   entities: [__dirname + '/../**/*.entity.{js,ts}'], // acessa todas as pastas do projeto e procura pelas entities
   synchronize: true, // sincroniza automaticamente o Schema com o DB sempre que alterado (sem necessidade de fazer migrations)
 };

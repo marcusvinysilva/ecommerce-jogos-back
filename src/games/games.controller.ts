@@ -6,6 +6,7 @@ import {
   Patch,
   Param,
   Delete,
+  ValidationPipe,
 } from '@nestjs/common';
 //import JwtAuthenticationGuard from '../authentication/jwt-authentication.guard';
 import { CreateGameDto } from './dto/createGame.dto';
@@ -25,7 +26,7 @@ export class GamesController {
   @Post()
   //@Role(UserRole.ADMIN)
   //@UseGuards(JwtAuthenticationGuard)
-  async createGame(@Body() game: CreateGameDto) {
+  async createGame(@Body(ValidationPipe) game: CreateGameDto) {
     const newGame = await this.gamesService.createGame(game);
     return {
       newGame,

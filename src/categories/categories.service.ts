@@ -13,8 +13,8 @@ export default class CategoriesService {
     private categoriesRepository: Repository<Category>,
   ) {}
 
-  getAllCategories(): Promise<Category[]> {
-    return this.categoriesRepository.find({ relations: ['games'] });
+  getAllCategories() {
+    return this.categoriesRepository.find();
   }
 
   async getCategoryById(id: string): Promise<Category> {
