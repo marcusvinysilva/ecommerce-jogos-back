@@ -5,7 +5,7 @@
 ![LOGO] (logo)
 
 A imagem representa o reflexo de uma pessoa como um urso bravo e imergido em um jogo (olhos, fone e controle da cor roxa). Por isso o controle virado. Algo como representando a vontade humana de entrar em uma realidade virtual de entretenimento sugerida pelo site.
-E, ULTIMATE foi o nome escolhido pela Equipe n. 8, para o projeto final de Boot Camp, no módulo 5, turma C005 da Blue Edtech.
+E, ULTIMATE foi o nome escolhido pela Equipe n. 8, para o projeto final de Boot Camp, no módulo 5, turma C005 da Blue Edtech. O nome tem relação a sermos a ultima equipe do Boot Camp, além da referência "time eite", ou seja time 8.
 
 **Descrição**
 
