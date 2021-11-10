@@ -7,7 +7,6 @@ import { Repository } from 'typeorm';
 
 @Injectable()
 export default class CategoriesService {
-
   constructor(
     @InjectRepository(Category)
     private categoriesRepository: Repository<Category>,

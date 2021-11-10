@@ -40,6 +40,6 @@ export default class CategoriesController {
   @Delete(':id')
   async deleteCategory(@Param('id') id: string) {
     await this.categoriesService.deleteCategory(id);
-    return { message: 'Game succesfully removed'}
+    return { message: 'Game succesfully removed' };
   }
 }

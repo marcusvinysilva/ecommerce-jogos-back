@@ -16,11 +16,15 @@ export class UserRepository extends Repository<Game> {
     const query = this.createQueryBuilder('game');
 
     if (gameName) {
-      query.andWhere('game.gameName ILIKE :gameName', { gameName: `%${gameName}%` });
+      query.andWhere('game.gameName ILIKE :gameName', {
+        gameName: `%${gameName}%`,
+      });
     }
 
     if (description) {
-      query.andWhere('game.description ILIKE :description', { description: `%${description}%` });
+      query.andWhere('game.description ILIKE :description', {
+        description: `%${description}%`,
+      });
     }
 
     if (price) {

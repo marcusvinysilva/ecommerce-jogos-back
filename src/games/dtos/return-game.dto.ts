@@ -2,6 +2,6 @@
 import { Game } from '../game.entity'; // Game
 
 export class ReturnGameDto {
-    game: Game;
-    message: string;
+  game: Game;
+  message: string;
 }

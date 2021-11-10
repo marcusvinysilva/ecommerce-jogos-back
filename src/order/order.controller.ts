@@ -1,5 +1,13 @@
 /* eslint-disable prettier/prettier */
-import { UseGuards, Body, Controller, Get, Post, UsePipes, ValidationPipe } from '@nestjs/common';
+import {
+  UseGuards,
+  Body,
+  Controller,
+  Get,
+  Post,
+  UsePipes,
+  ValidationPipe,
+} from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { OrderService } from './order.service';
 import { AuthGuard } from '@nestjs/passport';
@@ -10,7 +18,7 @@ import { Order } from './order.entity';
 @ApiTags('order')
 @Controller('order')
 export class OrderController {
-    constructor(private service: OrderService) {}
+  constructor(private service: OrderService) {}
 
   @Post('/create')
   @UsePipes(ValidationPipe)
