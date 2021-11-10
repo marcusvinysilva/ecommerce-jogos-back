@@ -28,23 +28,9 @@ Das duas empresas parceiras, ao nosso grupo foi atribuído, também de forma ale
 > ● Documentação completa;
 > ● README.md bem construído no repositório.
 
-> *SPA*
-> ● Utilização do ReactJS;
-> ● Consumo de todos os endpoints da API;
-> ● Autenticação com JWT;
-> ● Responsividade;
-> ● Livre escolha de utilização de framework para estilização;
-> ● Aplicação de conceitos básicos de UX/UI;
-> ● Livre escolha da identidade visual;
-> ● Deploy;
-> ● Documentação completa;
-> ● README.md bem construído no repositório.
-
-> Os repositórios da API e da SPA precisam estar separados, bem organizados e públicos. Todos os requisitos citados acima são obrigatórios e serão avaliados.<
-
 A Equipe n. 8 está desenvolvendo um site e-commerce de jogos virtuais para computadores, denominado ULTIMATE, conforme o item 1 deste Readme.md.
 
-Para o desenvolvimento do proposto, estão sendo utilizadas as ferramentas de comunicação e organização: Jira, Miro, Branchs no GitHub, Google Meet e Jitse. A programação está sendo realizada no VS Code, cujos códigos estão guardados na nuvem do GitHub do membro Scrum Master, apresentado no item 8.
+Para o desenvolvimento do proposto, estão sendo utilizadas as ferramentas de comunicação e organização: Jira, Miro, Discord, Branchs no GitHub, Google Meet e Jitse. A programação está sendo realizada no VS Code, cujos códigos estão guardados na nuvem do GitHub do membro Scrum Master, apresentado no item 8.
 Dos itens obrigatórios para o SPI, relacionado à especialidade Back End, inicialmente foram traçados como desafios, quais sejam: elaborar a documentação completa durante o desenvolvimento, fazermos bem o Readme.md.
 
 Estão sendo relacionadas, no mínimo 8(oito) principais tabelas: DADOS DOS USUÁRIOS, CATEGORIA (de usuários e de produtos), PRODUTOS, CARRINHO, FORMAS DE PAGAMENTO, ENTREGA etc.
@@ -56,9 +42,7 @@ Foram definidas as rotas:
 
 ![Rotas] (rotas)
 
-Dos itens obrigatórios para SPA, relacionados à especialidade Front End atualmente desempenhada por estudantes de Full Stack, foram: responsividade; definir o layout utilizando Figma e usar SO (Nest).
-
-Definido o Backlog, as prioridades de desenvolvimento também, como sendo:
+Definido o Backlog, as prioridades de desenvolvimento Back End também, como sendo:
 
 1. Autenticação/cadastro (administrador/outros - API Receita para validar CPF);
 2. Categorias;
