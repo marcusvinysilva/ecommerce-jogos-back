@@ -9,6 +9,7 @@ import { APP_INTERCEPTOR } from '@nestjs/core';
 import { LoggerInterceptor } from './interceptors/logger.interceptor';
 import { MailerModule } from '@nestjs-modules/mailer';
 import { mailerConfig } from './configs/mailer.config';
+import { OrderModule } from './order/order.module';
 
 @Module({
   imports: [
@@ -17,6 +18,7 @@ import { mailerConfig } from './configs/mailer.config';
     MailerModule.forRoot(mailerConfig),
     UsersModule,
     AuthModule,
+    OrderModule,
   ],
   controllers: [],
   providers: [
