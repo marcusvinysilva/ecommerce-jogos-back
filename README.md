@@ -1,13 +1,13 @@
 **README BACK END**
 
-**1 Nome e logotipo**
+**Nome e logotipo**
 
 ![LOGO] (logo)
 
 A imagem representa o reflexo de uma pessoa como um urso bravo e imergido em um jogo (olhos, fone e controle da cor roxa). Por isso o controle virado. Algo como representando a vontade humana de entrar em uma realidade virtual de entretenimento sugerida pelo site.
 E, ULTIMATE foi o nome escolhido pela Equipe n. 8, para o projeto final de Boot Camp, no módulo 5, turma C005 da Blue Edtech.
 
-**2 DESCRIÇÃO**
+**Descrição**
 
 Para o Boot Camp, no módulo 5, turma C005 da Blue Edtech, a Equipe n. 8 foram selecionados aleatoriamente 7 (sete) pessoas, das quais 3 (três) estudantes de Full Stack e 4(quatro) da especialidade Back End, apresentados no item 8 deste Readme.md.
 
@@ -70,3 +70,18 @@ Definido o Backlog, as prioridades de desenvolvimento também, como sendo:
 8. Se possível, sugestão de produtos parecidos;
 9. Finalizar compra (cupom, CEP (Correios), endereço, tipo de pagamento);
 10. Conectar um API de pagamento.
+
+**Apoio**
+Caso necessite de alguma ajuda a respeito do projeto, pode contatar qualquer um dos membros da equipe, identificados no item a seguir.
+
+
+**Autores e agradecimentos**
+- [Bruno Truber] (https://www.linkedin.com/in/bruno-truber-b9576a178/);
+- [Gabriel Baldez] (https://www.linkedin.com/in/gabriel-baldez/);
+- [Gabriel Rocha] (https://www.linkedin.com/in/gabrielrochaas/);
+- [Marcus Silva] (https://www.linkedin.com/in/marcusvinysilva/);
+- [Vanessa Lopes] (https://www.linkedin.com/in/vanessa-de-sousa-lopes-59937a19a/);
+- [Vinicius Spanol] (https://www.linkedin.com/in/vinicius-spanol/);
+- [Walter de Carvalho] (https://www.linkedin.com/in/walter-de-carvalho/).
+
+Agradecemos à Blue Edtech e à OSF Digital pela oportunidade de aprendermos mais. 
