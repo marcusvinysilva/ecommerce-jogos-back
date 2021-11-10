@@ -1,0 +1,34 @@
+import {
+  IsString,
+  MaxLength,
+  IsOptional,
+  IsNotEmpty,
+  ValidateNested,
+} from 'class-validator';
+import { Type } from 'class-transformer';
+import ObjectWithIdDTO from '../../utils/types/objectWithId.dto';
+
+export class UpdateGameDto {
+  @IsString()
+  @IsNotEmpty({ message: 'Field name is required' })
+  gameName: string;
+
+  @IsString()
+  @IsNotEmpty({ message: 'Description is required' })
+  @MaxLength(200, {
+    message: 'The description must have no more than 200 characters.',
+  })
+  description: string;
+
+  @IsString()
+  @IsNotEmpty({ message: 'Field name is required' })
+  price: string;
+
+  @IsOptional()
+  @IsString()
+  images: string;
+
+  @ValidateNested()
+  @Type(() => ObjectWithIdDTO)
+  category: ObjectWithIdDTO;
+}

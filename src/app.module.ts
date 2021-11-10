@@ -10,6 +10,8 @@ import { LoggerInterceptor } from './interceptors/logger.interceptor';
 import { MailerModule } from '@nestjs-modules/mailer';
 import { mailerConfig } from './configs/mailer.config';
 import { OrderModule } from './order/order.module';
+import { GamesModule } from './games/games.module';
+import { CategoriesModule } from './categories/categories.module';
 
 @Module({
   imports: [
@@ -19,6 +21,8 @@ import { OrderModule } from './order/order.module';
     UsersModule,
     AuthModule,
     OrderModule,
+    GamesModule,
+    CategoriesModule,
   ],
   controllers: [],
   providers: [
