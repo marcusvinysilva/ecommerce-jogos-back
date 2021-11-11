@@ -9,7 +9,7 @@ import {
 } from '@nestjs/common';
 //import JwtAuthenticationGuard from '../authentication/jwt-authentication.guard';
 import { CreateGameDto } from './dto/createGame.dto';
-import { UpdateGameDto } from './dto/updateGame.dto';
+import { UpdateGameDto } from './dtos/updateGame.dto';
 import { GamesService } from './games.service';
 
 @Controller('games')

@@ -9,7 +9,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import Game from './game.entity';
 import { CreateGameDto } from './dto/createGame.dto';
-import { UpdateGameDto } from './dto/updateGame.dto';
+import { UpdateGameDto } from './dtos/updateGame.dto';
 
 @Injectable()
 export class GamesService {

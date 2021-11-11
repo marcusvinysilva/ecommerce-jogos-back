@@ -1,14 +1,18 @@
+/* eslint-disable prettier/prettier */
+import { Order } from 'src/order/order.entity';
 import {
   Column,
   Entity,
   PrimaryGeneratedColumn,
   JoinTable,
   ManyToOne,
+  OneToMany,
 } from 'typeorm';
 import Category from '../categories/category.entity';
 
 @Entity()
-class Game {
+export class Game {
+
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
@@ -27,6 +31,7 @@ class Game {
   @ManyToOne(() => Category, (category: Category) => category.games)
   @JoinTable()
   category: Category;
-}
 
-export default Game;
+  @OneToMany(() => Order, (order: Order) => order.games)
+  order: Order;
+}

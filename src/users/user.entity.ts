@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import {
   BaseEntity,
   Entity,
@@ -6,8 +7,10 @@ import {
   Column,
   CreateDateColumn,
   UpdateDateColumn,
+  OneToMany,
 } from 'typeorm';
 import * as bcrypt from 'bcrypt';
+import { Order } from 'src/order/order.entity';
 
 @Entity()
 @Unique(['email', 'cpf', 'phone'])
@@ -61,4 +64,6 @@ export class User extends BaseEntity {
     const hash = await bcrypt.hash(password, this.salt);
     return hash === this.password;
   }
+  @OneToMany(() => Order, (order: Order) => order.user)
+  order: Order;
 }
