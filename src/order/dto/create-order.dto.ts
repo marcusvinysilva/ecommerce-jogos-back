@@ -6,8 +6,4 @@ export class CreateOrderDto {
   user: string;
   @IsNotEmpty()
   game: string[];
-  @IsNotEmpty()
-  pay: string[];
-  @IsNotEmpty()
-  delivery: string[];
 }
