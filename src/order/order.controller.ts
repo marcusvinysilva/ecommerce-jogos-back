@@ -20,11 +20,11 @@ import { Order } from './order.entity';
 export class OrderController {
   constructor(private service: OrderService) {}
 
-  @Post('/create')
-  @UsePipes(ValidationPipe)
-  create(@Body() createOrderDto: CreateOrderDto): Promise<Order> {
-    return this.service.postOrder(createOrderDto);
-  }
+  // @Post('/create')
+  // @UsePipes(ValidationPipe)
+  // create(@Body() createOrderDto: CreateOrderDto): Promise<Order[]> {
+  //   return this.service.postOrder(createOrderDto);
+  // }
 
   @Get()
   @UsePipes(ValidationPipe)

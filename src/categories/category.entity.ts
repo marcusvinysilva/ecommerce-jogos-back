@@ -5,7 +5,7 @@ import {
   OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
-import Game from '../games/game.entity';
+import { Game } from '../games/game.entity';
 
 @Entity()
 class Category {

@@ -8,7 +8,7 @@ import {
   Delete,
 } from '@nestjs/common';
 //import JwtAuthenticationGuard from '../authentication/jwt-authentication.guard';
-import { CreateGameDto } from './dto/createGame.dto';
+import { CreateGameDto } from './dtos/createGame.dto';
 import { UpdateGameDto } from './dtos/updateGame.dto';
 import { GamesService } from './games.service';
 

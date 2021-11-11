@@ -7,12 +7,12 @@ import {
   JoinTable,
   ManyToOne,
   OneToMany,
+  BaseEntity,
 } from 'typeorm';
 import Category from '../categories/category.entity';
 
 @Entity()
-export class Game {
-
+export class Game extends BaseEntity {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 

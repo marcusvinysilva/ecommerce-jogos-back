@@ -7,25 +7,24 @@ import {
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import Game from './game.entity';
-import { CreateGameDto } from './dto/createGame.dto';
+import { Game } from './game.entity';
+import { CreateGameDto } from './dtos/createGame.dto';
 import { UpdateGameDto } from './dtos/updateGame.dto';
+import { GameRepository } from './games.repository';
 
 @Injectable()
 export class GamesService {
   constructor(
     @InjectRepository(Game)
-    private gamesRepository: Repository<Game>,
+    private gamesRepository: GameRepository,
   ) {}
 
   getAllGames() {
     return this.gamesRepository.find();
   }
 
-  async createGame(game: CreateGameDto) {
-    const newGame = await this.gamesRepository.create(game);
-    await this.gamesRepository.save(newGame);
-    return newGame;
+  async createGame(createGameDto: CreateGameDto) {
+    return this.gamesRepository.createGame(createGameDto);
   }
 
   async findGameById(id: string): Promise<Game> {
