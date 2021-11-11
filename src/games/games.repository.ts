@@ -2,7 +2,10 @@
 import { EntityRepository, Repository } from 'typeorm';
 import { Game } from './game.entity';
 import { FindGamesQueryDto } from './dtos/find-game-query.dto';
-import { ConflictException, InternalServerErrorException } from '@nestjs/common';
+import {
+  ConflictException,
+  InternalServerErrorException,
+} from '@nestjs/common';
 import { CreateGameDto } from './dtos/createGame.dto';
 
 @EntityRepository(Game)

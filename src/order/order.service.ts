@@ -1,19 +1,18 @@
 /* eslint-disable prettier/prettier */
 import { Injectable } from '@nestjs/common';
-import { CreateOrderDto } from '../order/dto/create-order.dto';
-import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Order } from './order.entity';
+import { OrderRepository } from './order.repository';
 
 @Injectable()
 export class OrderService {
   constructor(
-    @InjectRepository(Order)
-    private readonly orderRepository: Repository<Order>,
+    @InjectRepository(OrderRepository)
+    private orderRepository: OrderRepository,
   ) {}
 
-  async find() {
-    return await this.orderRepository.find();
+  async find(): Promise<Order[]> {
+    return this.orderRepository.find();
   }
 
   // async postOrder(createOrderDto: CreateOrderDto) {
