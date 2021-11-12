@@ -1,6 +1,9 @@
 {
   "name": "ultimate-back",
   "version": "0.0.1",
+  "engines": {
+    "node": "14.17.4"
+  },
   "description": "",
   "author": "",
   "private": true,
