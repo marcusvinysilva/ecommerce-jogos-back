@@ -24,13 +24,13 @@ export class GamesService {
     return this.gamesRepository.find();
   }
 
-  async getGamesByCategory(
-    queryDto: FindGamesQueryDto,
-  ): Promise<{ games: Game[]; total: number }> {
-    const games = await this.gamesRepository.getGamesByCategory(queryDto);
-    return games;
-  };
-  
+  // async getGamesByCategory(
+  //   queryDto: FindGamesQueryDto,
+  // ): Promise<{ games: Game[]; total: number }> {
+  //   const games = await this.gamesRepository.getGamesByCategory(queryDto);
+  //   return games;
+  // }
+
   async createGame(createGameDto: CreateGameDto) {
     return this.gamesRepository.createGame(createGameDto);
   }
