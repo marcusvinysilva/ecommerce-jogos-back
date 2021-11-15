@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import {
   Body,
   Controller,
@@ -6,11 +7,11 @@ import {
   Patch,
   Param,
   Delete,
-  Query,
+ // Query,
 } from '@nestjs/common';
 //import JwtAuthenticationGuard from '../authentication/jwt-authentication.guard';
 import { CreateGameDto } from './dtos/createGame.dto';
-import { FindGamesQueryDto } from './dtos/find-game-query.dto';
+//import { FindGamesQueryDto } from './dtos/find-game-query.dto';
 import { UpdateGameDto } from './dtos/updateGame.dto';
 import { GamesService } from './games.service';
 

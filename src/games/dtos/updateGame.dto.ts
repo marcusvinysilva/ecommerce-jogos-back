@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { IsString, MaxLength, IsOptional, IsNotEmpty } from 'class-validator';
 
 export class UpdateGameDto {
