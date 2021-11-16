@@ -33,7 +33,10 @@ export class GamesService {
   }
 
   async createGame(createGameDto: CreateGameDto) {
-    return this.gamesRepository.createGame(createGameDto);
+    //return this.gamesRepository.createGame(createGameDto);
+    const newGame = this.gamesRepository.create(createGameDto);
+    await this.gamesRepository.save(newGame);
+    return newGame;
   }
 
   async findGameById(id: string): Promise<Game> {
