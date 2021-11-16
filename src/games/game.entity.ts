@@ -8,6 +8,8 @@ import {
   ManyToOne,
   OneToMany,
   BaseEntity,
+  JoinColumn,
+  RelationId,
 } from 'typeorm';
 import Category from '../categories/category.entity';
 
@@ -34,4 +36,7 @@ export class Game extends BaseEntity {
 
   @RelationId((game: Game) => game.category)
   categoryId: string;
+
+  @ManyToOne(() => Order, (order) => order.games)
+  order: Order;
 }
