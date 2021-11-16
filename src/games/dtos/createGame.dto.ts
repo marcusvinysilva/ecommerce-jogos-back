@@ -23,5 +23,5 @@ export class CreateGameDto {
 
   @IsOptional()
   @IsString()
-  category: string;
+  categoryId: string;
 }

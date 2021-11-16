@@ -28,10 +28,10 @@ export class Game extends BaseEntity {
   @Column({ nullable: false, type: 'varchar' })
   images: string;
 
-  @ManyToOne(() => Category, (category: Category) => category.games)
-  @JoinTable()
+  @JoinColumn({ name: 'categoryId', referencedColumnName: 'id' })
+  @ManyToOne(() => Category, (category) => category.games)
   category: Category;
 
-  @OneToMany(() => Order, (order: Order) => order.games)
-  order: Order;
+  @RelationId((game: Game) => game.category)
+  categoryId: string;
 }
