@@ -14,12 +14,12 @@ export class GameRepository extends Repository<Game> {
     createGameDto: CreateGameDto,
     //role: UserRole,
   ): Promise<Game> {
-    const { gameName, images, category, description, price } = createGameDto;
+    const { gameName, images, categoryId, description, price } = createGameDto;
     const game = this.create();
     game.gameName = gameName;
     game.images = images;
     game.price = price;
-    game.category.name = category;
+    game.categoryId = categoryId;
     game.description = description;
 
     try {

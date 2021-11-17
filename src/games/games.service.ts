@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import {
   HttpException,
   HttpStatus,
@@ -6,7 +7,7 @@ import {
   NotFoundException,
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+//import { Repository } from 'typeorm';
 import { Game } from './game.entity';
 import { CreateGameDto } from './dtos/createGame.dto';
 import { UpdateGameDto } from './dtos/updateGame.dto';
@@ -24,15 +25,18 @@ export class GamesService {
     return this.gamesRepository.find();
   }
 
-  // async getGamesByCategory(
-  //   queryDto: FindGamesQueryDto,
-  // ): Promise<{ games: Game[]; total: number }> {
-  //   const games = await this.gamesRepository.getGamesByCategory(queryDto);
-  //   return games;
-  // }
+  async getGamesByCategory(
+    queryDto: FindGamesQueryDto,
+  ): Promise<{ games: Game[]; total: number }> {
+    const games = await this.gamesRepository.findGames(queryDto);
+    return games;
+  }
 
   async createGame(createGameDto: CreateGameDto) {
-    return this.gamesRepository.createGame(createGameDto);
+    //return this.gamesRepository.createGame(createGameDto);
+    const newGame = this.gamesRepository.create(createGameDto);
+    await this.gamesRepository.save(newGame);
+    return newGame;
   }
 
   async findGameById(id: string): Promise<Game> {

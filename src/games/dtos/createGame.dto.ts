@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { IsString, MaxLength, IsOptional, IsNotEmpty } from 'class-validator';
 
 export class CreateGameDto {
@@ -22,5 +23,5 @@ export class CreateGameDto {
 
   @IsOptional()
   @IsString()
-  category: string;
+  categoryId: string;
 }
