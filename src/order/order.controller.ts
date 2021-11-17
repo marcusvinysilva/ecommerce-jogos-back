@@ -1,6 +1,8 @@
 /* eslint-disable prettier/prettier */
-import { Controller, Get } from '@nestjs/common';
+import { Body, Controller, Get, Post, UsePipes, ValidationPipe } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
+import { CreateOrderDto } from './dto/create-order.dto';
+import { Order } from './order.entity';
 import { OrderService } from './order.service';
 
 @ApiTags('order')
@@ -8,11 +10,11 @@ import { OrderService } from './order.service';
 export class OrderController {
   constructor(private orderService: OrderService) {}
 
-  // @Post('/create')
-  // @UsePipes(ValidationPipe)
-  // create(@Body() createOrderDto: CreateOrderDto): Promise<Order[]> {
-  //   return this.service.postOrder(createOrderDto);
-  // }
+  @Post('/create')
+  @UsePipes(ValidationPipe)
+  create(@Body() createOrderDto: CreateOrderDto) {
+    return this.orderService.postOrder(createOrderDto);
+  }
 
   @Get()
   findAll() {
