@@ -10,6 +10,7 @@ import {
   ValidationPipe,
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
+import { ApiTags } from '@nestjs/swagger';
 import { CreateUserDto } from 'src/users/dtos/create-user.dto';
 import { UserRole } from 'src/users/user-roles.enum';
 import { User } from 'src/users/user.entity';
@@ -19,6 +20,7 @@ import { CredentialsDto } from './credentials.dto';
 import { GetUser } from './get-user.decorator';
 
 @Controller('auth')
+@ApiTags('auth')
 export class AuthController {
   constructor(private authService: AuthService) {}
 
