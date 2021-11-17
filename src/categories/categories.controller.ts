@@ -8,11 +8,13 @@ import {
   UseGuards,
   Post,
 } from '@nestjs/common';
+import { ApiTags } from '@nestjs/swagger';
 import CategoriesService from './categories.service';
 import CreateCategoryDto from './dto/createCategory.dto';
 import UpdateCategoryDto from './dto/updateCategory.dto';
 
 @Controller('categories')
+@ApiTags('categories')
 //@UseGuards(AuthGuard(), RolesGuard)
 export default class CategoriesController {
   constructor(private categoriesService: CategoriesService) {}
