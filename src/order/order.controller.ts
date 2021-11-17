@@ -2,7 +2,6 @@
 import { Body, Controller, Get, Post, UsePipes, ValidationPipe } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { CreateOrderDto } from './dto/create-order.dto';
-import { Order } from './order.entity';
 import { OrderService } from './order.service';
 
 @ApiTags('order')
