@@ -1,9 +1,11 @@
 /* eslint-disable prettier/prettier */
+import { ApiProperty } from '@nestjs/swagger';
 import { IsString, MaxLength, IsOptional, IsNotEmpty } from 'class-validator';
 
 export class UpdateGameDto {
   @IsString()
   @IsNotEmpty({ message: 'Field name is required' })
+  @ApiProperty()
   gameName: string;
 
   @IsString()
@@ -11,17 +13,21 @@ export class UpdateGameDto {
   @MaxLength(200, {
     message: 'The description must have no more than 200 characters.',
   })
+  @ApiProperty()
   description: string;
 
   @IsString()
   @IsNotEmpty({ message: 'Field name is required' })
+  @ApiProperty()
   price: string;
 
   @IsOptional()
   @IsString()
+  @ApiProperty()
   images: string;
 
   @IsOptional()
   @IsString()
+  @ApiProperty()
   category: string;
 }
