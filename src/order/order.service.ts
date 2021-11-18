@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { CreateOrderDto } from './dto/create-order.dto';
 import { Order } from './order.entity';
@@ -22,6 +22,17 @@ export class OrderService {
   })
     await this.orderRepository.save(newOrder);
     return newOrder;
+  }
+
+  async updateOrder(id: string, updateOrder: CreateOrderDto): Promise<Order> {
+    await this.orderRepository.update(id, updateOrder);
+    const updatedCategory = await this.orderRepository.findOne(id, {
+      relations: ['games'] ['user']
+    });
+    if (updatedCategory) {
+      return updatedCategory;
+    }
+    throw new NotFoundException(id);
   }
 
 }

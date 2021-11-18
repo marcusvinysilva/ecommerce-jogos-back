@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { Injectable, NotFoundException } from '@nestjs/common';
 import CreateCategoryDto from './dto/createCategory.dto';
 import Category from './category.entity';
