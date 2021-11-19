@@ -7,7 +7,7 @@ import {
   Patch,
   Param,
   Delete,
- // Query,
+  // Query,
 } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 //import JwtAuthenticationGuard from '../authentication/jwt-authentication.guard';
@@ -25,6 +25,15 @@ export class GamesController {
   @Get()
   getAllGames() {
     return this.gamesService.getAllGames();
+  }
+
+  @Get('findGameById/:id')
+  async findGameById(@Param('id') id: string) {
+    const game = await this.gamesService.findGameById(id);
+    return {
+      game,
+      message: 'found game',
+    };
   }
 
   // @Get('findGamesByQuery')

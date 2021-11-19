@@ -40,9 +40,7 @@ export class GamesService {
   }
 
   async findGameById(id: string): Promise<Game> {
-    const game = await this.gamesRepository.findOne(id, {
-      select: ['gameName', 'price', 'description', 'category', 'images', 'id'],
-    });
+    const game = await this.gamesRepository.findOne(id);
 
     if (!game) throw new NotFoundException('Game not found');
 
