@@ -13,6 +13,7 @@ import { CreateGameDto } from './dtos/createGame.dto';
 import { UpdateGameDto } from './dtos/updateGame.dto';
 import { GameRepository } from './games.repository';
 import { FindGamesQueryDto } from './dtos/find-game-query.dto';
+import Category from 'src/categories/category.entity';
 
 @Injectable()
 export class GamesService {
@@ -32,15 +33,30 @@ export class GamesService {
     return games;
   }
 
-  async createGame(createGameDto: CreateGameDto) {
-    //return this.gamesRepository.createGame(createGameDto);
-    const newGame = this.gamesRepository.create(createGameDto);
-    await this.gamesRepository.save(newGame);
-    return newGame;
-  }
+  async createGame(game: CreateGameDto, category: Category) {
+    //return this.gamesRepository.createGame(game);
+     // const newGame = this.gamesRepository.create(game);
+     // await this.gamesRepository.save(newGame);
+     // return newGame;
+     const newGame = await this.gamesRepository.create({
+       ...game,
+       genre: category
+     });
+     await this.gamesRepository.save(newGame);
+     return newGame;
+   }
 
   async findGameById(id: string): Promise<Game> {
-    const game = await this.gamesRepository.findOne(id);
+    const game = await this.gamesRepository.findOne(id, {
+      select: [
+        'gameName',
+        'price',
+        'description',
+        'categoryId',
+        'images',
+        'id',
+      ],
+    });
 
     if (!game) throw new NotFoundException('Game not found');
 
