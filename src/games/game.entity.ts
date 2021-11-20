@@ -30,13 +30,18 @@ export class Game extends BaseEntity {
   @Column({ nullable: false, type: 'varchar' })
   images: string;
 
-  @JoinColumn({ name: 'categoryId', referencedColumnName: 'id' })
-  @ManyToOne(() => Category, (category) => category.games)
-  category: Category;
+  // @JoinColumn({ name: 'categoryId', referencedColumnName: 'id' })
+  // @ManyToOne(() => Category, (category) => category.games)
+  // category: Category;
 
-  @RelationId((game: Game) => game.category)
+  // @RelationId((game: Game) => game.category)
+  // categoryId: string;
+  @Column({ nullable: true, type: 'varchar' })
   categoryId: string;
 
+  @ManyToOne(() => Category, (genre: Category) => genre.games)
+  genre: Category;
+  
   @ManyToOne(() => Order, (order) => order.games)
   order: Order;
 }
