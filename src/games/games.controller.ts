@@ -7,9 +7,11 @@ import {
   Patch,
   Param,
   Delete,
+  ValidationPipe,
   // Query,
 } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
+import Category from 'src/categories/category.entity';
 //import JwtAuthenticationGuard from '../authentication/jwt-authentication.guard';
 import { CreateGameDto } from './dtos/createGame.dto';
 //import { FindGamesQueryDto } from './dtos/find-game-query.dto';
@@ -49,14 +51,17 @@ export class GamesController {
   @Post()
   //@Role(UserRole.ADMIN)
   //@UseGuards(JwtAuthenticationGuard)
-  async createGame(@Body() game: CreateGameDto) {
-    const newGame = await this.gamesService.createGame(game);
+  async createGame(
+    @Body(ValidationPipe) game: CreateGameDto,
+    category: Category,
+  ) {
+    const newGame = await this.gamesService.createGame(game, category);
     return {
       newGame,
       message: 'Game was successfully registered! ',
     };
   }
-
+  
   @Patch(':id')
   async updateGame(
     @Body() updateGameDto: UpdateGameDto,
