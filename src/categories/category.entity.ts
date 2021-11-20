@@ -15,8 +15,10 @@ class Category {
   @Column({ nullable: false, type: 'varchar' })
   name: string;
 
-  @OneToMany(() => Game, (game: Game) => game.category)
-  @JoinTable()
+  // @OneToMany(() => Game, (game: Game) => game.category)
+  // @JoinTable()
+  // games: Game[];
+  @OneToMany(() => Game, (game: Game) => game.categoryId)
   games: Game[];
 }
 
