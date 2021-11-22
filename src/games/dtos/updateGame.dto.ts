@@ -29,5 +29,10 @@ export class UpdateGameDto {
   @IsOptional()
   @IsString()
   @ApiProperty()
+  screenshots: string;
+
+  @IsOptional()
+  @IsString()
+  @ApiProperty()
   category: string;
 }

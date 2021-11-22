@@ -29,5 +29,10 @@ export class CreateGameDto {
   @IsOptional()
   @IsString()
   @ApiProperty()
+  screenshots: string;
+
+  @IsOptional()
+  @IsString()
+  @ApiProperty()
   categoryId: string;
 }
