@@ -10,8 +10,9 @@ import {
   BaseEntity,
   JoinColumn,
   RelationId,
+  ManyToMany,
 } from 'typeorm';
-import Category from '../categories/category.entity';
+import { Category } from '../categories/category.entity';
 
 @Entity()
 export class Game extends BaseEntity {
@@ -31,7 +32,7 @@ export class Game extends BaseEntity {
   images: string;
 
   @Column({ nullable: true, type: 'varchar' })
-  screenshots: string;
+  suplyId: string;
 
   // @JoinColumn({ name: 'categoryId', referencedColumnName: 'id' })
   // @ManyToOne(() => Category, (category) => category.games)
@@ -39,11 +40,16 @@ export class Game extends BaseEntity {
 
   // @RelationId((game: Game) => game.category)
   // categoryId: string;
-  @Column({ nullable: true, type: 'varchar' })
-  categoryId: string;
 
-  @ManyToOne(() => Category, (genre: Category) => genre.games)
-  genre: Category;
+  // @Column({ nullable: true, type: 'varchar' })
+  // categoryId: string;
+
+  // @ManyToOne(() => Category, (genre: Category) => genre.games)
+  // genre: Category;
+
+  @JoinTable()
+  @ManyToMany(() => Category, (category: Category) => category.games)
+  category: string[];
 
   @ManyToOne(() => Order, (order) => order.games)
   order: Order;

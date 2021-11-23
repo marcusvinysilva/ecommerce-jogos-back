@@ -18,8 +18,8 @@ export class OrderService {
 
   async postOrder(createOrderDto: CreateOrderDto) {
     const newOrder = await this.orderRepository.create({
-      ...createOrderDto
-  })
+      ...createOrderDto,
+    });
     await this.orderRepository.save(newOrder);
     return newOrder;
   }
@@ -27,12 +27,11 @@ export class OrderService {
   async updateOrder(id: string, updateOrder: CreateOrderDto): Promise<Order> {
     await this.orderRepository.update(id, updateOrder);
     const updatedCategory = await this.orderRepository.findOne(id, {
-      relations: ['games'] ['user']
+      relations: ['games']['user'],
     });
     if (updatedCategory) {
       return updatedCategory;
     }
     throw new NotFoundException(id);
   }
-
 }

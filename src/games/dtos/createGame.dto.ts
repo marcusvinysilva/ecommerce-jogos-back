@@ -29,7 +29,7 @@ export class CreateGameDto {
   @IsOptional()
   @IsString()
   @ApiProperty()
-  screenshots: string;
+  suplyId: string;
 
   @IsOptional()
   @IsString()

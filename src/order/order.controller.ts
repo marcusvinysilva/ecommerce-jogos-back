@@ -1,5 +1,14 @@
 /* eslint-disable prettier/prettier */
-import { Body, Controller, Get, Param, Patch, Post, UsePipes, ValidationPipe } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  Param,
+  Patch,
+  Post,
+  UsePipes,
+  ValidationPipe,
+} from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { CreateOrderDto } from './dto/create-order.dto';
 import { OrderService } from './order.service';
@@ -21,10 +30,7 @@ export class OrderController {
   }
 
   @Patch(':id')
-  async update(
-    @Param('id') id: string,
-    @Body() updateOrder: CreateOrderDto,
-  ) {
+  async update(@Param('id') id: string, @Body() updateOrder: CreateOrderDto) {
     return this.orderService.updateOrder(id, updateOrder);
   }
 }
