@@ -48,8 +48,10 @@ export class Game extends BaseEntity {
   // genre: Category;
 
   @JoinTable()
-  @ManyToMany(() => Category, (category: Category) => category.games)
-  category: string[];
+  @ManyToMany(() => Category, (category: Category) => category.games, {
+    cascade: true,
+  })
+  category: Category[];
 
   @ManyToOne(() => Order, (order) => order.games)
   order: Order;

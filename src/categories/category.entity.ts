@@ -2,13 +2,14 @@ import {
   Column,
   Entity,
   JoinTable,
+  ManyToMany,
   OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { Game } from '../games/game.entity';
 
 @Entity()
-class Category {
+export class Category {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
@@ -18,8 +19,12 @@ class Category {
   // @OneToMany(() => Game, (game: Game) => game.category)
   // @JoinTable()
   // games: Game[];
-  @OneToMany(() => Game, (game: Game) => game.categoryId)
+
+  // @OneToMany(() => Game, (game: Game) => game.categoryId)
+  // games: Game[];
+
+  @ManyToMany(() => Game, (game: Game) => game.category)
   games: Game[];
 }
 
-export default Category;
+// export default Category;

@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 import { Injectable, NotFoundException } from '@nestjs/common';
 import CreateCategoryDto from './dto/createCategory.dto';
-import Category from './category.entity';
+import { Category } from './category.entity';
 import UpdateCategoryDto from './dto/updateCategory.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';

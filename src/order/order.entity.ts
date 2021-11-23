@@ -8,9 +8,9 @@ export class Order extends BaseEntity {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @ManyToOne(() => User, (user) => user.order)
-  user: User;
+    @ManyToOne(() => User, (user) => user.order)
+    user: User;
 
-  @ManyToOne(() => Game, (game) => game.order)
-  games: Game;
+    @ManyToOne(() => Game, (game) => game.order)
+    games: Game;
 }
