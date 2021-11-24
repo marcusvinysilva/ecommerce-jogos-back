@@ -25,14 +25,14 @@ export class Game extends BaseEntity {
   @Column({ nullable: true, type: 'varchar' })
   description: string;
 
-  @Column({ nullable: true, type: 'varchar' })
-  price: string;
+  @Column({ nullable: true, type: 'float' })
+  price: number;
 
   @Column({ nullable: true, type: 'varchar' })
   images: string;
 
   @Column({ nullable: true, type: 'varchar' })
-  suplyId: string;
+  supplyId: string;
 
   // @JoinColumn({ name: 'categoryId', referencedColumnName: 'id' })
   // @ManyToOne(() => Category, (category) => category.games)

@@ -19,7 +19,7 @@ export class UpdateGameDto {
   @IsString()
   @IsNotEmpty({ message: 'Field name is required' })
   @ApiProperty()
-  price: string;
+  price: number;
 
   @IsOptional()
   @IsString()
@@ -29,7 +29,7 @@ export class UpdateGameDto {
   @IsOptional()
   @IsString()
   @ApiProperty()
-  suplyId: string;
+  supplyId: string;
 
   @IsOptional()
   @IsString()
