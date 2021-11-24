@@ -14,12 +14,16 @@ import { UpdateGameDto } from './dtos/updateGame.dto';
 import { GameRepository } from './games.repository';
 import { FindGamesQueryDto } from './dtos/find-game-query.dto';
 import { Category } from 'src/categories/category.entity';
+import { Repository } from 'typeorm';
 
 @Injectable()
 export class GamesService {
   constructor(
     @InjectRepository(Game)
     private gamesRepository: GameRepository,
+
+    // @InjectRepository(Category)
+    // private categoriesRepository: Repository<Category>,
   ) {}
 
   getAllGames() {
@@ -34,10 +38,7 @@ export class GamesService {
   }
 
   async createGame(game: CreateGameDto, category: Category) {
-    //return this.gamesRepository.createGame(game);
-    // const newGame = this.gamesRepository.create(game);
-    // await this.gamesRepository.save(newGame);
-    // return newGame;
+    // const category =
     const newGame = await this.gamesRepository.create({
       ...game,
       // genre: category,
@@ -48,14 +49,7 @@ export class GamesService {
 
   async findGameById(id: string): Promise<Game> {
     const game = await this.gamesRepository.findOne(id, {
-      select: [
-        'gameName',
-        'price',
-        'description',
-        'suplyId',
-        'images',
-        'id',
-      ],
+      select: ['gameName', 'price', 'description', 'supplyId', 'images', 'id'],
     });
 
     if (!game) throw new NotFoundException('Game not found');
@@ -86,4 +80,14 @@ export class GamesService {
       throw new HttpException('Post not found', HttpStatus.NOT_FOUND);
     }
   }
+
+  // private async preloadCategoryByName(name: string): Promise<Category> {
+  //   const category = await this.categoriesRepository.findOne({ name });
+
+  //   if (category) {
+  //     return category;
+  //   }
+
+  //   return this.categoriesRepository.create({ name });
+  // }
 }
