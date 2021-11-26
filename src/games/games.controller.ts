@@ -39,15 +39,15 @@ export class GamesController {
     };
   }
 
-  @Get('findGamesByQuery')
-  async getGamesByCategory(@Query() query: FindGamesQueryDto) {
-    const found = await this.gamesService.getGamesByCategory(query);
+  // @Get('findGamesByQuery')
+  // async getGamesByCategory(@Query() query: FindGamesQueryDto) {
+  //   const found = await this.gamesService.getGamesByCategory(query);
 
-    return {
-      found,
-      message: 'Games found',
-    };
-  }
+  //   return {
+  //     found,
+  //     message: 'Games found',
+  //   };
+  // }
 
   @Post()
   //@Role(UserRole.ADMIN)
