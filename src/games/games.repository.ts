@@ -27,10 +27,10 @@ export class GameRepository extends Repository<Game> {
       return game;
     } catch (error) {
       if (error.code.toString() === '23505') {
-        throw new ConflictException('O Jogo já está cadastrado');
+        throw new ConflictException('The game was already registered');
       } else {
         throw new InternalServerErrorException(
-          'Erro ao salvar o jogo no banco de dados',
+          'Something when wrong while registering the game',
         );
       }
     }
