@@ -21,10 +21,9 @@ export class GamesService {
   constructor(
     @InjectRepository(Game)
     private gamesRepository: GameRepository,
-
-    // @InjectRepository(Category)
-    // private categoriesRepository: Repository<Category>,
-  ) {}
+  ) // @InjectRepository(Category)
+  // private categoriesRepository: Repository<Category>,
+  {}
 
   getAllGames() {
     return this.gamesRepository.find();

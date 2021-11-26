@@ -1,6 +1,12 @@
 /* eslint-disable prettier/prettier */
 import { ApiProperty } from '@nestjs/swagger';
-import { IsString, MaxLength, IsOptional, IsNotEmpty, IsNumber } from 'class-validator';
+import {
+  IsString,
+  MaxLength,
+  IsOptional,
+  IsNotEmpty,
+  IsNumber,
+} from 'class-validator';
 
 export class CreateGameDto {
   @IsString()

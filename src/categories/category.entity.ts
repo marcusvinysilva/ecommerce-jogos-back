@@ -20,7 +20,6 @@ export class Category {
   // @JoinTable()
   // games: Game[];
 
-  // @OneToMany(() => Game, (game: Game) => game.categoryId)
   // games: Game[];
 
   @ManyToMany(() => Game, (game: Game) => game.category)
