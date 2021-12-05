@@ -13,7 +13,7 @@ async function bootstrap() {
       origin: [
         'http://localhost:3000',
         'http://localhost:3001',
-        'https://ultimate-front.herokuapp.com',
+        'https://ultimate-front.herokuapp.com/',
       ],
     },
   });
